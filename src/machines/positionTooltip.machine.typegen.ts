@@ -3,6 +3,7 @@
 export interface Typegen0 {
   "@@xstate/typegen": true;
   internalEvents: {
+    "": { type: "" };
     "xstate.init": { type: "xstate.init" };
   };
   invokeSrcNameMap: {};
@@ -12,10 +13,20 @@ export interface Typegen0 {
     guards: never;
     delays: never;
   };
-  eventsCausingActions: {};
+  eventsCausingActions: {
+    assignProps: "GET_PROPS";
+    positionBottom: "";
+    positionLeft: "";
+    positionRight: "";
+    positionTop: "";
+  };
   eventsCausingServices: {};
-  eventsCausingGuards: {};
+  eventsCausingGuards: {
+    allPropsAreDefined: "";
+    isLeft: "";
+    isTop: "";
+  };
   eventsCausingDelays: {};
-  matchesStates: "off" | "on";
+  matchesStates: "checking" | "final" | "idle" | "positionX" | "positionY";
   tags: never;
 }

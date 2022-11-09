@@ -5,3 +5,6 @@ export const INTERVAL_SWITCH = 3.5 * 1000;
 export const INTERVAL_RETURN = 5 * 1000;
 
 export const ONE_DAY = 24 * 60 * 60 * 1000;
+
+const DEFAULT_TIME_TO_SHOW = 300;
+const DEFAULT_TIME_TO_HIDE = 5000;
