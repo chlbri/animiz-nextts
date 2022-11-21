@@ -23,6 +23,11 @@ import {
 } from 'xstate';
 import { matches, MatchOptions } from './machines/matches';
 
+export const identityCompare = <T>(a: T, b: T) => a === b;
+export function indentitySelector<Input, Output>(value: Input) {
+  return value as unknown as Output;
+}
+
 //TODO: create Library
 export default function reactInterpret<
   TContext,
@@ -75,15 +80,15 @@ export default function reactInterpret<
   const stop = () => service.stop();
 
   const useSelector = <T = State>(
-    selector: (emitted: State) => T = (state) => state as T,
-    compare?: (a: T, b: T) => boolean
+    selector: (emitted: State) => T = indentitySelector,
+    compare: (a: T, b: T) => boolean = identityCompare
   ) => {
     return useS(service, selector, compare);
   };
 
   const useContext = <T = TContext>(
-    selector?: (emitted: TContext) => T,
-    compare?: (a: T, b: T) => boolean
+    selector: (emitted: TContext) => T = indentitySelector,
+    compare: (a: T, b: T) => boolean = identityCompare
   ) => {
     const _selector = (state: State) => {
       if (selector) return selector(state.context);

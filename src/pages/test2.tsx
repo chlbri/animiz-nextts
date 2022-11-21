@@ -9,7 +9,7 @@ const Page: FC<Props> = () => {
     start();
   }, []);
   return (
-    <div className='flex space-x-6 font-bold text-2xl'>
+    <div className='flex space-x-6 text-2xl font-bold'>
       <span>{JSON.stringify(value)}</span>
       <button
         onClick={onClick}
